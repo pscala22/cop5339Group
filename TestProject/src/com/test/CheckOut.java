@@ -49,6 +49,7 @@ public class CheckOut extends JFrame {
         JPanel cartPanel = new JPanel();
         cartPanel.add(scrollPane);
 
+
         add(panel, BorderLayout.CENTER);
         add(cartPanel, BorderLayout.NORTH);
 
