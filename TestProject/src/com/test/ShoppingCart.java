@@ -108,6 +108,15 @@ public class ShoppingCart extends JFrame {
                 setTitle("Shopping Cart");
             }
         });
+
+        checkOut.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CheckOut pay = new CheckOut();
+                pay.setVisible(true);
+                setVisible(false);
+            }
+        });
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 500);

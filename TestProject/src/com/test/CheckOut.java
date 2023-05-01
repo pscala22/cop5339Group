@@ -56,7 +56,9 @@ public class CheckOut extends JFrame {
         backBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CheckOut.this.setVisible(false);
+                ShoppingCart cart = new ShoppingCart();
+                cart.setVisible(true);
+                setVisible(false);
             }
         });
 
