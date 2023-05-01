@@ -89,4 +89,12 @@ public class CheckOut extends JFrame {
     public static void main(String[] args) {
         new CheckOut();
     }
+
+	public JScrollPane getScrollPane() {
+		return scrollPane;
+	}
+
+	public void setScrollPane(JScrollPane scrollPane) {
+		this.scrollPane = scrollPane;
+	}
 }
