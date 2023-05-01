@@ -17,6 +17,8 @@ public class ShoppingCart extends JFrame {
     private JButton clearButton;
     private JTextArea cartArea;
     private JButton checkOut;
+
+
     private double totalPrice = 0;
     
     public ShoppingCart() {
