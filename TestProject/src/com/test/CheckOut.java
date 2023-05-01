@@ -57,7 +57,6 @@ public class CheckOut extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CheckOut.this.setVisible(false);
-                ShoppingCart.setVisible(true);
             }
         });
 

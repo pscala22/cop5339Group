@@ -16,6 +16,7 @@ public class ShoppingCart extends JFrame {
     private JButton addButton;
     private JButton clearButton;
     private JTextArea cartArea;
+    private JButton checkOut;
     private double totalPrice = 0;
     
     public ShoppingCart() {
@@ -30,6 +31,7 @@ public class ShoppingCart extends JFrame {
         addButton = new JButton("Add to Cart");
         clearButton = new JButton("Clear Cart");
         cartArea = new JTextArea(20, 40);
+        checkOut = new JButton("Check Out");
         JScrollPane scrollPane = new JScrollPane(cartArea);
         
         JPanel panel = new JPanel(new GridBagLayout());
@@ -69,6 +71,11 @@ public class ShoppingCart extends JFrame {
         constraints.gridy = 4;
         constraints.gridwidth = 2;
         panel.add(clearButton, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 5;
+        constraints.gridwidth = 2;
+        panel.add(checkOut, constraints);
         
         JPanel cartPanel = new JPanel();
         cartPanel.add(scrollPane);
