@@ -1,6 +1,7 @@
 package com.test;
 
 import javax.swing.*;
+import java.sql.*;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -12,6 +13,11 @@ public class Registration extends JFrame {
     private JTextField nameField;
     private JPasswordField passwordField;
     private JButton registerButton;
+    
+    private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+    private static final String DB_URL = "jdbc:mysql://Pauls-MacBook-Pro.local:3306/COP5339account";
+    private static final String USER = "root";
+    private static final String PASS = "Ps10222001";
     
     public Registration() {
         super("Registration");
@@ -53,11 +59,24 @@ public class Registration extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String username = nameField.getText();
                 String password = new String(passwordField.getPassword());
-                if (username.equals("admin") && password.equals("password")) {
-                    dispose();
-                    new Login();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Invalid login credentials.", "Error", JOptionPane.ERROR_MESSAGE);
+                try {
+                    Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+                    PreparedStatement stmt = conn.prepareStatement("INSERT INTO COP5339account (username, password) VALUES (?, ?)");
+                    stmt.setString(1, username);
+                    stmt.setString(2, password);
+                    int rows = stmt.executeUpdate();
+                    if (rows > 0) {
+                        JOptionPane.showMessageDialog(null, "User registered successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        dispose(); // close the registration window
+                        new Login(); // open the login window
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Registration failed. Please try again later.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                    stmt.close();
+                    conn.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "An error occurred while registering. Please try again later.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -70,5 +89,8 @@ public class Registration extends JFrame {
     public static void main(String[] args) {
         new Registration();
     }
-}
 
+	public static String getJdbcDriver() {
+		return JDBC_DRIVER;
+	}
+}
