@@ -13,14 +13,18 @@ public class CheckOut extends JFrame {
     private JButton cardPay;
     private JTextArea Cart;
     private JTextArea Payment;
+    private double totalPrice;
     private JScrollPane scrollPane;
 
-    public CheckOut() {
+    public CheckOut(double Price) {
         checkOut = new JLabel("CHECK OUT");
         cashPay = new JButton("Cash");
         cardPay = new JButton("Card");
         backBtn = new JButton("Back");
+        totalPrice = Price;
         Cart = new JTextArea(20, 40);
+        Cart.append("Your cart total is: " + totalPrice + "\n");
+        Cart.append("Choose your payment below (Cash or Card)");
         Payment = new JTextArea(4, 40);
         JScrollPane scrollPane = new JScrollPane(Cart);
 

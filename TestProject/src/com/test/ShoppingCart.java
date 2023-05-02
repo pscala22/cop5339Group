@@ -14,6 +14,7 @@ public class ShoppingCart extends JFrame {
     private JTextField priceField;
     private JButton addButton;
     private JButton clearButton;
+    private JButton checkOutBtn;
     private JTextArea cartArea;
     private double totalPrice;
     
@@ -41,6 +42,7 @@ public class ShoppingCart extends JFrame {
         priceField.setEditable(false);
         addButton = new JButton("Add to Cart");
         clearButton = new JButton("Clear Cart");
+        checkOutBtn = new JButton("Check Out");
         cartArea = new JTextArea(10, 30);
         
         JPanel inputPanel = new JPanel(new GridLayout(3, 2));
@@ -54,6 +56,7 @@ public class ShoppingCart extends JFrame {
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(addButton);
         buttonPanel.add(clearButton);
+        buttonPanel.add(checkOutBtn);
         
         setLayout(new BorderLayout());
         add(inputPanel, BorderLayout.NORTH);
@@ -71,7 +74,6 @@ public class ShoppingCart extends JFrame {
 
                 totalPrice += total;
                 setTitle("Shopping Cart - Total: $" + totalPrice);
-
                 quantities[fruitList.getSelectedIndex()] = 0;
                 quantityField.setText("0");
             }
@@ -87,6 +89,16 @@ public class ShoppingCart extends JFrame {
                     quantities[i] = 0;
                 }
                 quantityField.setText("0");
+            }
+        });
+
+        checkOutBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                CheckOut checkOut = new CheckOut(totalPrice);
+                checkOut.setVisible(true);
+
             }
         });
 
@@ -132,5 +144,11 @@ public class ShoppingCart extends JFrame {
 			setLocationRelativeTo(null);
 			setVisible(true);
     	}
+        public double getTotalPrice(){
+            return totalPrice;
+        }
 
+        public void setTotalPrice(double price){
+            totalPrice = price;
+        }
 };
