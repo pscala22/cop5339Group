@@ -86,9 +86,6 @@ public class CheckOut extends JFrame {
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new CheckOut();
-    }
 
 	public JScrollPane getScrollPane() {
 		return scrollPane;

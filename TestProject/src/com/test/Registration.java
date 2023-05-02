@@ -86,10 +86,6 @@ public class Registration extends JFrame {
         setVisible(true);
     }
     
-    public static void main(String[] args) {
-        new Registration();
-    }
-
 	public static String getJdbcDriver() {
 		return JDBC_DRIVER;
 	}

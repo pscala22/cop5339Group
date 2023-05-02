@@ -100,10 +100,6 @@ public class Login extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
-        new Login();
-    }
-
     public static String getJdbcDriver() {
         return JDBC_DRIVER;
     }
