@@ -64,18 +64,30 @@ public class CheckOut extends JFrame {
         cashPay.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Payment.setText("");
-                Payment.append("Pay by cash!");
+                int result = JOptionPane.showConfirmDialog(null, "Do you want to complete the purchase?", "Confirm Purchase", JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+                    // Process payment here (cash or card)
+                    JOptionPane.showMessageDialog(null, "Payment successful. Thank you for your purchase!");
+                    setVisible(true);
+                    totalPrice = 0;
+                }
             }
         });
 
+
         cardPay.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                Payment.setText("");
-                Payment.append("Pay by card!");
-            }
-        });
+                public void actionPerformed(ActionEvent e) {
+                    int result = JOptionPane.showConfirmDialog(null, "Do you want to complete the purchase?", "Confirm Purchase", JOptionPane.YES_NO_OPTION);
+                    if (result == JOptionPane.YES_OPTION) {
+                        // Process payment here (cash or card)
+                        JOptionPane.showMessageDialog(null, "Payment successful. Thank you for your purchase!");
+                        setVisible(true);
+                        totalPrice = 0;
+                    }
+                }
+            });
+
         backBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
